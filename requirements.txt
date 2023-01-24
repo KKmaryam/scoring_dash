@@ -1,0 +1,15 @@
+Flask
+gunicorn
+lightgbm
+matplotlib
+numpy
+pandas
+Pillow
+plotly
+requests
+scikit_learn
+seaborn
+shap
+streamlit
+streamlit_shap
+uvicorn
