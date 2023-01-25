@@ -377,24 +377,5 @@ shap.dependence_plot(ID_var,
                     show = False)
 fig.tight_layout()
 st.pyplot(fig)
-st.markdown("""
-                <h1 style="color:#3aa1a2;font-size:2.3em;font-style:italic;font-weight:700;margin:0px;">
-                7. Scatter Plots</h1>
-                """, 
-                unsafe_allow_html=True)
-df_2 = pd.DataFrame(y_pred_lgbm_proba, columns=['proba_classe_0', 'proba_classe_1'])  
-           
-fig = px.scatter(df_2, x="proba_classe_1", y="proba_classe_0")
-fig.show()
-st.markdown("""
-                <h1 style="color:#3aa1a2;font-size:2.3em;font-style:italic;font-weight:700;margin:0px;">
-                8. Distplots</h1>
-                """, 
-                unsafe_allow_html=True)
-X,Y=st.multiselect("*Veuillez sélectionner deux variable à l'aide du menu déroulant 👇*", 
-    (X_test_clean().drop(labels="sk_id_curr", axis=1).columns.to_list()))
-st.write('You selected:', X)
-st.write('You selected:', Y)
-df = X_test_clean()
-fig = px.scatter(df, x=X, y=Y)
-fig.show()
+
+
