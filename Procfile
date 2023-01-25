@@ -1,1 +1,1 @@
-web: scoring_dash --port=$PORT --no-browser Dashboard.py
+web: sh setup.sh && streamlit run Dashboard.py --port=$PORT 
