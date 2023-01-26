@@ -33,7 +33,12 @@ st.markdown("""
             unsafe_allow_html=True)
 st.markdown("""
             <p style="color:#d61e8b;text-align:center;font-size:1.5em;font-style:italic;font-family:'Roboto Condensed';margin:0px;">
-             OpenClassrooms Projet n°7 - Data Scientist - Kchaou Mariem</p>
+            * OpenClassrooms Projet n°7 - Data Scientist * </p>
+            """, 
+            unsafe_allow_html=True)
+st.markdown("""
+            <p style="color:#d61e8b;text-align:center;font-size:1.5em;font-style:italic;font-family:'Roboto Condensed';margin:0px;">
+           * Kchaou Mariem *</p>
             """, 
             unsafe_allow_html=True)
 
