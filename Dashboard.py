@@ -246,7 +246,8 @@ st.write("")
 explainer_shap = shap.TreeExplainer(model_LGBM)
 shap_values = explainer_shap.shap_values(X_test_clean().drop(labels="sk_id_curr", axis=1))
 # récupération de l'index correspondant à l'identifiant du client
-idx=X_test_clean()[X_test_clean()['sk_id_curr']==ID_client].index.tolist()
+#idx=X_test_clean()[X_test_clean()['sk_id_curr']==ID_client].index.tolist()
+idx = int(X_test_clean()[X_test_clean()['sk_id_curr']==ID_client].index[0])
 #idx = int(X_test_clean()[X_test_clean()['sk_id_curr']==ID_client].index([0]-1))
 
     # Graphique force_plot
