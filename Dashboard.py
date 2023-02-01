@@ -385,22 +385,26 @@ fig.tight_layout()
 st.pyplot(fig)
 st.markdown("""
                 <h1 style="color:#3aa1a2;font-size:2.3em;font-style:italic;font-weight:700;margin:0px;">
-                7. Scatter Plots</h1>
+                7. Distplots </h1>
                 """, 
                 unsafe_allow_html=True)
-df_2 = pd.DataFrame(y_pred_lgbm_proba, columns=['proba_classe_0', 'proba_classe_1'])  
-           
-fig = px.scatter(df_2, x="proba_classe_1", y="proba_classe_0")
-fig.show()
+df_2 = pd.DataFrame(y_pred_lgbm_proba, columns=['proba_classe_0', 'proba_classe_1'])
+new_df=df_2.assign(id_client=X_test_clean()["sk_id_curr"])
+st.plotly_chart(px.scatter(new_df, x="proba_classe_1", y="proba_classe_0", color='id_client'))
 st.markdown("""
                 <h1 style="color:#3aa1a2;font-size:2.3em;font-style:italic;font-weight:700;margin:0px;">
-                8. Distplots</h1>
+                8. Scatter Plots</h1>
                 """, 
                 unsafe_allow_html=True)
-X,Y=st.multiselect("*Veuillez sélectionner deux variable à l'aide du menu déroulant 👇*", 
+Y=st.selectbox("*Veuillez sélectionner un variable à l'aide du menu déroulant 👇*", 
     (X_test_clean().drop(labels="sk_id_curr", axis=1).columns.to_list()))
-st.write('You selected:', X)
+
 st.write('You selected:', Y)
 df = X_test_clean()
-fig = px.scatter(df, x=X, y=Y)
-fig.show()
+st.plotly_chart(px.scatter(df, x='sk_id_curr', y=Y, hover_data=['sk_id_curr']))
+st.markdown("""
+                <h1 style="color:#3aa1a2;font-size:2.3em;font-style:italic;font-weight:700;margin:0px;">
+                9. Histogramme""", 
+                unsafe_allow_html=True)
+new_df_2 =df.assign(  score=score)
+st.plotly_chart(px.histogram(new_df_2, y="ext_source_2", x='sk_id_curr', color="score"))
