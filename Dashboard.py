@@ -162,10 +162,10 @@ decision = y_pred_lgbm_df.loc[y_pred_lgbm_df['sk_id_curr']==ID_client, "decision
 col1, col2 = st.columns(2)
 with col2:
         st.markdown(""" <br> <br> """, unsafe_allow_html=True)
-        st.write(f"Le client dont l'identité numérique est {ID_client} a obtenu le score de {score }.")
-        st.write(f"Il y a donc un risque de {score:} que le client ait des difficultés de paiement.")
-        st.write(f"Le client est donc considéré par 'Prêt à dépenser' comme {solvabilite} \
-                et décide de lui {decision} le crédit. ")
+        st.write(f"Le client dont l'identité numérique est **{ID_client}** a obtenu le score de **{float(score)}%**.")
+        st.write(f"**Il y a donc un risque de {float(score)}% que le client ait des difficultés de paiement.**")
+        st.write(f"Le client est donc considéré par *'Prêt à dépenser'* comme **{solvabilite}** \
+                et décide de lui **{decision}** le crédit. ")
     # Impression du graphique jauge
 with col1:
         fig = go.Figure(go.Indicator(
