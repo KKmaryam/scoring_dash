@@ -402,12 +402,17 @@ st.markdown("""
                 8. Scatter Plots</h1>
                 """, 
                 unsafe_allow_html=True)
-X,Z=st.multiselect("*Veuillez sélectionner deux variables à l'aide du menu déroulant 👇*", 
-    (X_test_clean().drop(labels="sk_id_curr", axis=1).columns.to_list()))
-st.write("Vous avez sélectionné la variable :", X)
-st.write("Vous avez sélectionné la variable :", Z)
-df = X_test_clean()
-st.plotly_chart(px.scatter(df, x=X, y=Z, color='sk_id_curr'))
+option=[]
+options= st.multiselect("*Veuillez sélectionner deux variables à l'aide du menu déroulant 👇*", (X_test_clean().drop(labels="sk_id_curr", axis=1).columns.to_list()))
+st.write('You selected:',options)
+if len(options)==2:
+    X=options[0]
+    Z=options[1]
+    df = X_test_clean()
+    df_n=df.assign(score=score)
+    st.plotly_chart(px.scatter(df_n, x=X, y=Z, color='score'))
+else:
+    st.write("##")
 st.markdown("""
                 <h1 style="color:#3aa1a2;font-size:2.3em;font-style:italic;font-weight:700;margin:0px;">
                 9. Histogramme""", 
