@@ -402,15 +402,17 @@ st.markdown("""
                 8. Scatter Plots</h1>
                 """, 
                 unsafe_allow_html=True)
-option=[]
-options= st.multiselect("*Veuillez sélectionner deux variables à l'aide du menu déroulant 👇*", (X_test_clean().drop(labels="sk_id_curr", axis=1).columns.to_list()))
-st.write('You selected:',options)
-if len(options)==2:
-    X=options[0]
-    Z=options[1]
-    df = X_test_clean()
-    df_n=df.assign(score=score)
-    st.plotly_chart(px.scatter(df_n, x=X, y=Z, color='score'))
+data = pd.read_csv('data_1.csv')
+option = []
+options = st.multiselect("*Veuillez sélectionner deux variables à l'aide du menu déroulant 👇*",
+                         (data.drop(labels="sk_id_curr", axis=1).columns.to_list()))
+st.write('You selected:', options)
+if len(options) == 2:
+    X = options[0]
+    Z = options[1]
+    #df = X_test_clean()
+    #df_n = df.assign(score=score_1)
+    st.plotly_chart(px.scatter(data, x=X, y=Z, color='Score'))
 else:
     st.write("##")
 st.markdown("""
